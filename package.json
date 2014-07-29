@@ -1,0 +1,24 @@
+{
+  "name": "yogurt",
+  "version": "0.0.0",
+  "description": "better templating syntax for scaffolding",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/metaraine/yogurt.git"
+  },
+  "keywords": [
+    "templating",
+    "scaffolding",
+    "yeoman",
+    "yo"
+  ],
+  "author": "Raine Lourie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metaraine/yogurt/issues"
+  },
+  "homepage": "https://github.com/metaraine/yogurt"
+}
