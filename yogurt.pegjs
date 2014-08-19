@@ -1,17 +1,38 @@
 start
+  = textOrYogurt*
+
+textOrYogurt
   = yogurtBlock
   / text
 
 yogurtBlock
-  = yogurtCondition
-
-yogurtCondition
-  = one:[?] two:[?] rest:[^\n]+ '\n' { return 'a'+one + two + rest.join('') }
+  = '??' condition:[^\n]+ '\n' body:yogurtBody { 
+      return { 
+        type: 'condition', 
+        condition: condition.join(''),
+        body: body
+      }
+    }
 
 text
-  = one:[^?] two:[^?]* rest:[^?]* { return 'b'+rest.join('') }
+  = one:[^?] rest:[^?]+ { 
+      return { 
+        type: 'text', 
+        content: one + rest.join('')
+      }
+    }
 
-yogurtStart
-  = '??'
+yogurtBody
+  = content:indentedline+ empties:emptyline* {
+      return content + empties
+    }
 
-ws "whitespace" = [ \t\n\r]*
+emptyline
+  = '\n'
+
+indentedline
+  = indent+ line:[^\n]* '\n' { 
+      return line.join('')
+    }
+
+indent "indent" = [ \t\r]
